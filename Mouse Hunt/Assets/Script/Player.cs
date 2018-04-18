@@ -9,16 +9,14 @@ public class Player : MonoBehaviour
     public float speed;             //Floating point variable to store the player's movement speed.
     private float halfSpd;
 
-    public bool hitUp;
 
-    private Rigidbody2D rb;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
+    //private Rigidbody2D rb;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
 
-    public Transform UCol;
     // Use this for initialization
     void Start()
     {
         //Get and store a reference to the Rigidbody2D component so that we can access it.
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
 
         halfSpd = speed / 2;
     }
@@ -27,8 +25,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         InputMovement();
-
-        hitUp = Physics2D.Linecast(transform.position, UCol.position, 1 << LayerMask.NameToLayer("moveBlock"));
+     
     }
 
     void InputMovement()
@@ -42,9 +39,10 @@ public class Player : MonoBehaviour
         } else if (Input.GetKey(KeyCode.RightArrow)) {
             transform.position += transform.right * speed * Time.deltaTime;
         }
-        InputDiagonalMove();
+        //InputDiagonalMove();
     }
 
+    /*
     void InputDiagonalMove()
     {
         if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.RightArrow)) {
@@ -61,4 +59,5 @@ public class Player : MonoBehaviour
             transform.position -= transform.right * halfSpd * Time.deltaTime;
         }
     }
+    */
 }
